@@ -297,7 +297,7 @@
   /* ── SEC 3: Líneas de negocio ── */
   .lineas-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     gap: 8px;
     margin-bottom: 16px;
   }
@@ -439,6 +439,32 @@
   }
   .ini-field input { height: 42px; font-size: 12.5px; padding-top: 8px; }
 
+  /* ── SEC 6: Transversal ── */
+  .transversal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .transversal-card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+  .transversal-card:focus-within { border-color: var(--green-border); }
+  .transversal-header {
+    display: flex; align-items: flex-start;
+    gap: 12px; margin-bottom: 12px;
+  }
+  .transversal-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .transversal-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--text); margin-bottom: 3px;
+  }
+  .transversal-sub { font-size: 11px; color: var(--text-2); line-height: 1.4; font-weight: 300; }
+  .transversal-card textarea { min-height: 72px; font-size: 12.5px; }
+
   .add-btn {
     display: flex; align-items: center; gap: 8px;
     margin-top: 6px; padding: 9px 16px;
@@ -519,9 +545,10 @@
     .header h1 { font-size: 32px; }
     .proposito-grid { grid-template-columns: 1fr; }
     .capacidades-grid { grid-template-columns: 1fr; }
-    .lineas-grid { grid-template-columns: repeat(2, 1fr); }
+    .lineas-grid { grid-template-columns: repeat(3, 1fr); }
     .ercos-layers { grid-template-columns: 1fr; }
     .contribucion-grid { grid-template-columns: 1fr; }
+    .transversal-grid { grid-template-columns: 1fr; }
     .iniciativa-row { grid-template-columns: 22px 1fr; }
     .ini-field:nth-child(3), .ini-field:nth-child(4) { grid-column: 2; }
   }
@@ -651,6 +678,16 @@
             <div class="linea-name">Eficiencia</div>
             <div class="linea-sub">Electrificación · RECs</div>
           </div>
+          <div class="linea-card" onclick="toggleCard(this)">
+            <div class="linea-icon">🔧</div>
+            <div class="linea-name">O&M</div>
+            <div class="linea-sub">Operación y Mantenimiento</div>
+          </div>
+          <div class="linea-card" onclick="toggleCard(this)">
+            <div class="linea-icon">🏗️</div>
+            <div class="linea-name">Erconstrucción</div>
+            <div class="linea-sub">Nuestra constructora</div>
+          </div>
         </div>
         <span class="q-label">¿Cómo habilitas o potencias esas líneas?</span>
         <textarea rows="2" placeholder="Ej: La gerencia de O&M garantiza que los activos solares operen en el P90 prometido — sin eso, la comercialización no puede cumplir los contratos y las finanzas no cierran..."></textarea>
@@ -747,6 +784,68 @@
           </div>
         </div>
         <button class="add-btn" onclick="addIniciativa()" style="margin-top:10px;">+ Agregar iniciativa</button>
+      </div>
+    </div>
+
+    <!-- 06 IMPACTO TRANSVERSAL -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <div class="section-title">¿Cómo contribuye tu área más allá de su función?</div>
+          <div class="section-hint">Erco crece como sistema, no solo como suma de áreas. Define cómo tu gerencia contribuye a los cuatro ejes transversales que nos hacen más fuertes como organización.</div>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <div class="transversal-grid">
+
+          <div class="transversal-card">
+            <div class="transversal-header">
+              <span class="transversal-icon">🔗</span>
+              <div>
+                <div class="transversal-name">Confianza Sistémica</div>
+                <div class="transversal-sub">Predictibilidad, trazabilidad, cumplimiento de compromisos internos</div>
+              </div>
+            </div>
+            <textarea rows="2" placeholder="¿Qué hace tu área para que otras áreas y la dirección puedan confiar en lo que prometemos? Ej: entregamos datos de producción verificados antes de las 8am cada día, sin excepción..."></textarea>
+          </div>
+
+          <div class="transversal-card">
+            <div class="transversal-header">
+              <span class="transversal-icon">🏗️</span>
+              <div>
+                <div class="transversal-name">Arquitectura de Ecosistema</div>
+                <div class="transversal-sub">Cómo construyes relaciones externas que le abren puertas a Erco</div>
+              </div>
+            </div>
+            <textarea rows="2" placeholder="¿Con qué aliados, socios, proveedores o instituciones trabaja tu área que fortalecen el ecosistema de Erco? ¿Qué relación nueva deberías construir en 2026?"></textarea>
+          </div>
+
+          <div class="transversal-card">
+            <div class="transversal-header">
+              <span class="transversal-icon">🤝</span>
+              <div>
+                <div class="transversal-name">Personas</div>
+                <div class="transversal-sub">Cómo haces crecer a otros, mejoras la comunicación entre áreas y elevas al equipo</div>
+              </div>
+            </div>
+            <textarea rows="2" placeholder="¿Qué hace tu área para que otros equipos sean mejores? ¿Qué conocimiento compartes, qué puente entre áreas construyes, cómo formas a tu gente para que Erco se beneficie?"></textarea>
+          </div>
+
+          <div class="transversal-card">
+            <div class="transversal-header">
+              <span class="transversal-icon">🌍</span>
+              <div>
+                <div class="transversal-name">ESG</div>
+                <div class="transversal-sub">Impacto ambiental, social y de gobernanza desde tu área</div>
+              </div>
+            </div>
+            <textarea rows="2" placeholder="¿Cómo contribuye tu área al medio ambiente, a las comunidades donde operamos y a tener una organización más transparente y bien gobernada?"></textarea>
+          </div>
+
+        </div>
+
       </div>
     </div>
 
